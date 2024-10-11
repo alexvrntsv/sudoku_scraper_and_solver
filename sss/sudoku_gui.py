@@ -33,9 +33,10 @@ class SudokuGui:
         clear_button.grid(row=10, column=6, columnspan=3)
 
     def reload_puzzle(self):
-        print("Reload Puzzle")
+        self.scraper.get_puzzle()
+        self.create_grid()
     def check_puzzle(self):
-        print("Сheck me")
+        print("Check me")
 
     def clear_puzzle(self):
         print("Clear")
