@@ -1,4 +1,5 @@
 import tkinter as tk
+from typing import Union, List
 
 
 class SudokuGui:
@@ -7,7 +8,7 @@ class SudokuGui:
         self.root.title("Sudoku")
         self.scraper = scraper
         scraper.get_puzzle()
-        self.cells = [[None for _ in range(9)] for _ in range(9)]
+        self.cells: List[List[Union[tk.Label, tk.Entry, None]]] = [[None for _ in range(9)] for _ in range(9)]
         self.create_grid()
         self.create_buttons()
 
@@ -26,7 +27,7 @@ class SudokuGui:
         reload_button = tk.Button(self.root, text="Reload Puzzle", command=self.reload_puzzle)
         reload_button.grid(row=10, column=0, columnspan=3)
 
-        check_button = tk.Button(self.root, text="Сheck me", command=self.check_puzzle)
+        check_button = tk.Button(self.root, text="Check me", command=self.check_puzzle)
         check_button.grid(row=10, column=3, columnspan=3)
 
         clear_button = tk.Button(self.root, text="Clear", command=self.clear_puzzle)
@@ -35,10 +36,9 @@ class SudokuGui:
     def reload_puzzle(self):
         self.scraper.get_puzzle()
         self.create_grid()
+
     def check_puzzle(self):
         print("Check me")
 
     def clear_puzzle(self):
         print("Clear")
-
-
